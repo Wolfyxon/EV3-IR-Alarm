@@ -39,14 +39,15 @@ fn main() -> Ev3Result<()> {
                     loop {
                         switch = !switch;
                         
-                        let mut freq = 1000.0;
-
-                        if switch {
-                            freq = 500.0;
+                        let freq = if switch {
                             led.set_color(Led::COLOR_RED)?;
+
+                            500.0
                         } else {
                             led.set_color(Led::COLOR_OFF)?;
-                        }
+
+                            1000.0
+                        };
 
                         sound::tone(freq, 50)?.wait()?;
                     }
