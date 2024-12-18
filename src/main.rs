@@ -5,6 +5,8 @@ fn main() -> Ev3Result<()> {
     let ir = InfraredSensor::find().expect("IR sensor not connected");
     let led = Led::new().expect("LED error");
 
+    ir.set_mode_ir_prox().expect("Failed to set IR to proximity mode");
+
     let colors = vec![
         Led::COLOR_YELLOW, 
         Led::COLOR_AMBER,  
