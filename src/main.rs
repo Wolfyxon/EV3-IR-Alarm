@@ -6,6 +6,7 @@ fn main() -> Ev3Result<()> {
     let led = Led::new().expect("LED error");
 
     ir.set_mode_ir_prox().expect("Failed to set IR to proximity mode");
+    led.set_color(Led::COLOR_OFF)?; // Stops the startup animation
 
     let colors = vec![
         Led::COLOR_YELLOW, 
